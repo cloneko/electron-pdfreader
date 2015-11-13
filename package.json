@@ -9,6 +9,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "electron-prebuilt": "latest",
-    "gulp": "latest"
+    "gulp": "latest",
+    "gulp-asar": "latest"
    }
 }

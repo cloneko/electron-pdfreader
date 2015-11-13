@@ -1,14 +1,41 @@
-<html>
-<body> 
-  <h1>Hello World!</h1>
-   We are using Electron 
-   <script> document.write(process.versions['electron']) </script> on 
-   <script> document.write(process.platform) </script>
-   <script type="text/javascript"> 
-      var fs = require('fs');
-      var file = fs.readFileSync('app/package.json'); 
-      document.write(file); 
-   </script>
+<!doctype html>
+<html lang="en" ng-app="pdfApp">
+<head>
+  <meta charset="utf-8">
+  <title>PDF検索システム?</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="DocumentListCtrl">
 
-</body> 
-</html> 
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Sidebar content-->
+
+        検索: <input ng-model="query">
+        並び換え:
+        <select ng-model="orderProp">
+          <option value="name">名前</option>
+          <option value="age">新着順</option>
+        </select>
+
+      </div>
+      <div class="col-md-10">
+        <!--Body content-->
+
+        <ul class="documents">
+          <li ng-repeat="document in documents | filter:query">
+            <a href="{{document.url}}" target="_blank">{{document.name}}</a>
+            <!-- <p>{{document.snippet}}</p> -->
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
